@@ -1,0 +1,287 @@
+{
+	"info": {
+		"_postman_id": "44d1c8d1-31ff-4297-b073-111771816764",
+		"name": "attraxia assignment 2",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "25967387"
+	},
+	"item": [
+		{
+			"name": "auth",
+			"item": [
+				{
+					"name": "signup",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "email",
+									"value": "hola@hola.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "aa",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{NestJs API}}/auth/signup",
+							"host": [
+								"{{NestJs API}}"
+							],
+							"path": [
+								"auth",
+								"signup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "signin",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "email",
+									"value": "hola@hola.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "aa",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{NestJs API}}/auth/signin",
+							"host": [
+								"{{NestJs API}}"
+							],
+							"path": [
+								"auth",
+								"signin"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "user",
+			"item": [
+				{
+					"name": "Get current user",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsImVtYWlsIjoiaG9sYUBob2xhLmNvbSIsImlhdCI6MTY5MTU5ODM4NCwiZXhwIjoxNjkyMjAzMTg0fQ.yjsT8Ho3UkUTIUND6x5LSoCHw07NHOU4AfBcdjWDKMs",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{NestJs API}}/user/me",
+							"host": [
+								"{{NestJs API}}"
+							],
+							"path": [
+								"user",
+								"me"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "invoice",
+			"item": [
+				{
+					"name": "create invoice",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsImVtYWlsIjoiaG9sYUBob2xhLmNvbSIsImlhdCI6MTY5MTYwMDA4NCwiZXhwIjoxNjkyMjA0ODg0fQ.Qx79pQHgBgcmQjh0FnmvqRmnabpPDj2Qe0H-JtO3vkA",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"Sample Invoice\",\r\n    \"amount\": 100.00,\r\n    \"dueDate\": \"1994-11-05T08:15:30-05:00\",\r\n    \"userId\": 1\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{NestJs API}}/invoice/create",
+							"host": [
+								"{{NestJs API}}"
+							],
+							"path": [
+								"invoice",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get all invoices",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsImVtYWlsIjoiaG9sYUBob2xhLmNvbSIsImlhdCI6MTY5MTYwMDA4NCwiZXhwIjoxNjkyMjA0ODg0fQ.Qx79pQHgBgcmQjh0FnmvqRmnabpPDj2Qe0H-JtO3vkA",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{NestJs API}}/invoice/get",
+							"host": [
+								"{{NestJs API}}"
+							],
+							"path": [
+								"invoice",
+								"get"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get invoice by id",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsImVtYWlsIjoiaG9sYUBob2xhLmNvbSIsImlhdCI6MTY5MTYwMDA4NCwiZXhwIjoxNjkyMjA0ODg0fQ.Qx79pQHgBgcmQjh0FnmvqRmnabpPDj2Qe0H-JtO3vkA",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{NestJs API}}/invoice/get/1",
+							"host": [
+								"{{NestJs API}}"
+							],
+							"path": [
+								"invoice",
+								"get",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete invoice",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsImVtYWlsIjoiaG9sYUBob2xhLmNvbSIsImlhdCI6MTY5MTYwMDA4NCwiZXhwIjoxNjkyMjA0ODg0fQ.Qx79pQHgBgcmQjh0FnmvqRmnabpPDj2Qe0H-JtO3vkA",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{NestJs API}}/invoice/delete/2",
+							"host": [
+								"{{NestJs API}}"
+							],
+							"path": [
+								"invoice",
+								"delete",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get invoices by user id",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsImVtYWlsIjoiaG9sYUBob2xhLmNvbSIsImlhdCI6MTY5MTYwMDA4NCwiZXhwIjoxNjkyMjA0ODg0fQ.Qx79pQHgBgcmQjh0FnmvqRmnabpPDj2Qe0H-JtO3vkA",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{NestJs API}}/invoice/getByUser/1",
+							"host": [
+								"{{NestJs API}}"
+							],
+							"path": [
+								"invoice",
+								"getByUser",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update invoice",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsImVtYWlsIjoiaG9sYUBob2xhLmNvbSIsImlhdCI6MTY5MTYwMDA4NCwiZXhwIjoxNjkyMjA0ODg0fQ.Qx79pQHgBgcmQjh0FnmvqRmnabpPDj2Qe0H-JtO3vkA",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"Sample Invoice\",\r\n    \"amount\": 100.00,\r\n    \"dueDate\": \"1994-11-05T08:15:30-05:00\",\r\n    \"userId\": 1\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{NestJs API}}/invoice/update/1",
+							"host": [
+								"{{NestJs API}}"
+							],
+							"path": [
+								"invoice",
+								"update",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "NestJs API",
+			"value": "http://localhost:3333"
+		}
+	]
+}
