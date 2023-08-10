@@ -18,6 +18,9 @@ const SideBarStyles = {
         flexGrow: 1,
         p: 3,
     },
+    list: {
+        py: '5px',
+    },
     listItemIcon: {
         display: 'flex',
         justifyContent: 'center',

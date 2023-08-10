@@ -22,13 +22,13 @@ export default function ClippedDrawer({ children }: { children?: React.ReactNode
         <Box sx={{ display: 'flex' }}>
             <Drawer variant="permanent" open={true} sx={SideBarStyles.drawer}>
                 <Toolbar sx={SideBarStyles.listItemIcon}>
-                    <Image src={Logo} alt="Logo" />
+                    <Image src={Logo} alt="Logo" quality={100} />
                 </Toolbar>
                 <Box sx={{ overflow: 'auto' }}>
                     <List>
                         {MenuTitles.map((text, index) => (
                             // we can also disable padding here
-                            <ListItem key={text}>
+                            <ListItem key={text} sx={SideBarStyles.list}>
                                 <ListItemButton>
                                     <ListItemIcon sx={SideBarStyles.listItemIcon}>
                                         {<Image src={MenuIcons[index]} alt="Menu Icon" style={SideBarStyles.icons} />}
