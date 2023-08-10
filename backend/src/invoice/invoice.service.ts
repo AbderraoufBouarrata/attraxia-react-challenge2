@@ -1,4 +1,8 @@
-import { ForbiddenException, Injectable } from '@nestjs/common';
+import {
+    ForbiddenException,
+    Injectable,
+    NotFoundException,
+} from '@nestjs/common';
 import { PrismaService } from '../prisma/prisma.service';
 import { InvoiceDto } from './dto';
 import { PrismaClientKnownRequestError } from '@prisma/client/runtime/library';
@@ -15,6 +19,7 @@ export class InvoiceService {
                     amount: dto.amount,
                     dueDate: dto.dueDate,
                     userId: dto.userId,
+                    status: dto.status,
                 },
             });
             return invoice;
@@ -43,6 +48,7 @@ export class InvoiceService {
                     id: parseInt(id),
                 },
             });
+            if (!invoice) throw new NotFoundException('Invoice not found');
             return invoice;
         } catch (error) {
             throw error;
@@ -60,6 +66,7 @@ export class InvoiceService {
                     amount: dto.amount,
                     dueDate: dto.dueDate,
                     userId: dto.userId,
+                    status: dto.status,
                 },
             });
             return invoice;
@@ -76,7 +83,7 @@ export class InvoiceService {
                 },
             });
             return {
-                message: 'Invoice deleted successfully',
+                message: 'Invoice deleted successfully ',
             };
         } catch (error) {
             throw error;

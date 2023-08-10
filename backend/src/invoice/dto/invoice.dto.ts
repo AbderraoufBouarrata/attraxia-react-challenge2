@@ -1,19 +1,35 @@
-import { IsDateString, IsNotEmpty, IsNumber, IsString } from 'class-validator';
+import {
+    IsDateString,
+    IsNotEmpty,
+    IsNumber,
+    IsString,
+    IsIn,
+    IsOptional,
+} from 'class-validator';
 
 export class InvoiceDto {
     @IsString()
     @IsNotEmpty()
-    title: string;
+    @IsOptional()
+    title?: string;
 
     @IsNumber()
     @IsNotEmpty()
-    amount: number;
+    @IsOptional()
+    amount?: number;
 
-    @IsDateString() // Use IsDateString instead of IsDate
+    @IsDateString()
     @IsNotEmpty()
-    dueDate: Date;
+    @IsOptional()
+    dueDate?: Date;
+
+    @IsIn(['Complete', 'Pending', 'Cancel'])
+    @IsNotEmpty()
+    @IsOptional()
+    status?: string;
 
     @IsNumber()
     @IsNotEmpty()
-    userId: number;
+    @IsOptional()
+    userId?: number;
 }

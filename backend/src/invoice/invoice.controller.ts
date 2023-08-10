@@ -8,9 +8,9 @@ import {
     Post,
     UseGuards,
 } from '@nestjs/common';
+import { JwtGuard } from '../auth/guard';
 import { InvoiceDto } from './dto';
 import { InvoiceService } from './invoice.service';
-import { JwtGuard } from '../auth/guard';
 
 @UseGuards(JwtGuard)
 @Controller('invoice')
