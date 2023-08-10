@@ -2,6 +2,7 @@
 	"info": {
 		"_postman_id": "44d1c8d1-31ff-4297-b073-111771816764",
 		"name": "attraxia assignment 2",
+		"description": "Attraxia react challenge 2 api 😎",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "25967387"
 	},
@@ -15,19 +16,13 @@
 						"method": "POST",
 						"header": [],
 						"body": {
-							"mode": "urlencoded",
-							"urlencoded": [
-								{
-									"key": "email",
-									"value": "hola@hola.com",
-									"type": "text"
-								},
-								{
-									"key": "password",
-									"value": "aa",
-									"type": "text"
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"\",\r\n    \"password\": \"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
 								}
-							]
+							}
 						},
 						"url": {
 							"raw": "{{NestJs API}}/auth/signup",
@@ -48,19 +43,13 @@
 						"method": "POST",
 						"header": [],
 						"body": {
-							"mode": "urlencoded",
-							"urlencoded": [
-								{
-									"key": "email",
-									"value": "hola@hola.com",
-									"type": "text"
-								},
-								{
-									"key": "password",
-									"value": "aa",
-									"type": "text"
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"hola@hola.com\",\r\n    \"password\": \"aa\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
 								}
-							]
+							}
 						},
 						"url": {
 							"raw": "{{NestJs API}}/auth/signin",
@@ -103,6 +92,38 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "update user",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsImVtYWlsIjoiaG9sYUBob2xhLmNvbSIsImlhdCI6MTY5MTYwMDA4NCwiZXhwIjoxNjkyMjA0ODg0fQ.Qx79pQHgBgcmQjh0FnmvqRmnabpPDj2Qe0H-JtO3vkA",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"7amoud bou3lem\"\r\n    //optional\r\n    //\"email\": \"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{NestJs API}}/user",
+							"host": [
+								"{{NestJs API}}"
+							],
+							"path": [
+								"user"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
@@ -122,7 +143,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"title\": \"Sample Invoice\",\r\n    \"amount\": 100.00,\r\n    \"dueDate\": \"1994-11-05T08:15:30-05:00\",\r\n    \"userId\": 1\r\n}\r\n",
+							"raw": "{\r\n    \"title\": \"Sample Invoice\",\r\n    \"amount\": 100.00,\r\n    \"dueDate\": \"1994-11-05T08:15:30-05:00\",\r\n    \"userId\": 1,\r\n    \"status\": \"Complete\"\r\n}\r\n",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -178,14 +199,14 @@
 							}
 						],
 						"url": {
-							"raw": "{{NestJs API}}/invoice/get/1",
+							"raw": "{{NestJs API}}/invoice/get/4",
 							"host": [
 								"{{NestJs API}}"
 							],
 							"path": [
 								"invoice",
 								"get",
-								"1"
+								"4"
 							]
 						}
 					},

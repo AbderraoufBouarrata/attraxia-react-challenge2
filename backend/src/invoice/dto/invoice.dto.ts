@@ -30,6 +30,5 @@ export class InvoiceDto {
 
     @IsNumber()
     @IsNotEmpty()
-    @IsOptional()
-    userId?: number;
+    userId: number;
 }

@@ -22,12 +22,12 @@ export class InvoiceController {
         return this.invoiceService.getInvoices();
     }
 
-    @Get('get/:id') //TODO: fix this :D
+    @Get('get/:id')
     getInvoice(@Param() params: any) {
         return this.invoiceService.getInvoice(params.id);
     }
 
-    @Get('getByUser/:id') //TODO: fix this :D
+    @Get('getByUser/:id')
     getInvoicesByUser(@Param() params: any) {
         return this.invoiceService.getInvoicesByUser(params.id);
     }
@@ -37,12 +37,12 @@ export class InvoiceController {
         return this.invoiceService.createInvoice(dto);
     }
 
-    @Patch('update/:id') //TODO: fix this :D
+    @Patch('update/:id')
     updateInvoice(@Param() params: any, @Body() dto: InvoiceDto) {
         return this.invoiceService.updateInvoice(params.id, dto);
     }
 
-    @Delete('delete/:id') //TODO: fix this :D
+    @Delete('delete/:id')
     deleteInvoice(@Param() params: any) {
         return this.invoiceService.deleteInvoice(params.id);
     }
