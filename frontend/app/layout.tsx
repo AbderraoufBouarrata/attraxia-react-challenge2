@@ -1,9 +1,11 @@
+'use client';
 import './globals.css';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import SideBar from './_components/SideBar';
 import Contexts from './_contexts';
 import { colors } from './_utils/colors';
+import { usePathname } from 'next/navigation';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -13,6 +15,16 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
+    const pathname = usePathname();
+    if (pathname === '/signin' || pathname === '/signup') {
+        return (
+            <html lang="en">
+                <body className={inter.className} style={{ backgroundColor: colors.background }}>
+                    <Contexts>{children}</Contexts>
+                </body>
+            </html>
+        );
+    }
     return (
         <html lang="en">
             <body className={inter.className} style={{ backgroundColor: colors.background }}>
