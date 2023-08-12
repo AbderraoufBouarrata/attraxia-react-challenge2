@@ -12,6 +12,9 @@ const CustomizedButton = styled(Button)({
     fontSize: '16px',
     borderRadius: '10px',
     padding: '30px 0px',
+    '&:hover': {
+        backgroundColor: colors.blue_primary,
+    },
 });
 
 export default function CustomButton(Props: CustomButtonProps) {

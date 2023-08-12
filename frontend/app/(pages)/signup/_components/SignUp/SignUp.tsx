@@ -11,12 +11,14 @@ import Link from '@mui/material/Link';
 import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
 import Image from 'next/image';
-import { handleSubmit } from './Sign.helpers';
-import SignInStyles from './SignIn.styles';
-
-// TODO remove, this demo shouldn't need to reset the theme.
+import { handleSubmit } from './SignUp.helpers';
+import SignInStyles from './SignUp.styles';
+import { useState } from 'react';
+import { useRouter } from 'next/navigation';
 
 export default function SignUp() {
+    const [isChecked, setIsChecked] = useState(false);
+    const router = useRouter();
     return (
         <Grid container component="main" sx={SignInStyles.mainContainer}>
             <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
@@ -26,7 +28,14 @@ export default function SignUp() {
                     <Typography component="h1" variant="h5">
                         Sign up
                     </Typography>
-                    <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 1 }}>
+                    <Box
+                        component="form"
+                        noValidate
+                        onSubmit={async (e) => {
+                            (await handleSubmit(e)) && router.push('/');
+                        }}
+                        sx={{ mt: 1 }}
+                    >
                         <CustomInput
                             margin="normal"
                             required
@@ -38,16 +47,7 @@ export default function SignUp() {
                             type="email"
                             autoFocus
                         />
-                        <CustomInput
-                            margin="normal"
-                            required
-                            fullWidth
-                            id="name"
-                            placeholder="Name (Optional)"
-                            name="name"
-                            autoComplete="text"
-                            autoFocus
-                        />
+
                         <CustomInput
                             margin="normal"
                             required
@@ -68,7 +68,10 @@ export default function SignUp() {
                             id="passwordConfirm"
                             autoComplete="current-password"
                         />
-                        <FormControlLabel control={<Checkbox value="remember" color="primary" />} label="Remember me" />
+                        <FormControlLabel
+                            control={<Checkbox name="checkbox" checked={isChecked} onChange={() => setIsChecked(!isChecked)} color="primary" />}
+                            label="Remember me"
+                        />
                         <CustomButton type="submit" fullWidth variant="contained" sx={SignInStyles.button}>
                             Sign Up
                         </CustomButton>

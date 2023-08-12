@@ -10,6 +10,9 @@ async function bootstrap() {
             forbidNonWhitelisted: true,
         }),
     );
+    app.enableCors();
     await app.listen(3333);
 }
 bootstrap();
+
+//TODO ADD NAME PROPERTY TO DTO IN SERVER

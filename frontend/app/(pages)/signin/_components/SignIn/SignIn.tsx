@@ -13,10 +13,14 @@ import Typography from '@mui/material/Typography';
 import Image from 'next/image';
 import { handleSubmit } from './Sign.helpers';
 import SignInStyles from './SignIn.styles';
+import { useState } from 'react';
+import { useRouter } from 'next/navigation';
 
 // TODO remove, this demo shouldn't need to reset the theme.
 
 export default function SignIn() {
+    const [isChecked, setIsChecked] = useState(false);
+    const router = useRouter();
     return (
         <Grid container component="main" sx={SignInStyles.mainContainer}>
             <Grid item xs={false} sm={4} md={7} sx={SignInStyles.backgroundContainer} />
@@ -27,7 +31,14 @@ export default function SignIn() {
                     <Typography component="h1" variant="h5">
                         Sign in
                     </Typography>
-                    <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 1 }}>
+                    <Box
+                        component="form"
+                        noValidate
+                        onSubmit={async (e) => {
+                            (await handleSubmit(e)) && router.push('/');
+                        }}
+                        sx={{ mt: 1 }}
+                    >
                         <CustomInput
                             margin="normal"
                             required
@@ -49,7 +60,10 @@ export default function SignIn() {
                             id="password"
                             autoComplete="current-password"
                         />
-                        <FormControlLabel control={<Checkbox value="remember" color="primary" />} label="Remember me" />
+                        <FormControlLabel
+                            control={<Checkbox name="checkbox" checked={isChecked} onChange={() => setIsChecked(!isChecked)} color="primary" />}
+                            label="Remember me"
+                        />
                         <CustomButton type="submit" fullWidth variant="contained" sx={SignInStyles.button}>
                             Sign In
                         </CustomButton>
