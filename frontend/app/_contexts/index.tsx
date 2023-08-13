@@ -5,8 +5,8 @@ import { Provider } from 'react-redux';
 
 export default function index({ children }: { children: React.ReactNode }) {
     return (
-        <ThemeContextProvider>
-            <Provider store={store}>{children}</Provider>
-        </ThemeContextProvider>
+        <Provider store={store}>
+            <ThemeContextProvider>{children} </ThemeContextProvider>
+        </Provider>
     );
 }

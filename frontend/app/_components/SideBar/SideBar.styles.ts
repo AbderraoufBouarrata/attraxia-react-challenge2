@@ -1,3 +1,4 @@
+import { colors } from '@/app/_utils/colors';
 import React from 'react';
 
 const drawerWidth = 240;
@@ -27,8 +28,11 @@ const SideBarStyles = {
         alignItems: 'center',
     },
     listItemText: {
+        '& .MuiTypography-root': {
+            fontWeight: 600,
+        },
         fontSize: '16px',
-        fontWeight: 500,
+        color: colors.text,
     },
     icons: {
         width: '25px',

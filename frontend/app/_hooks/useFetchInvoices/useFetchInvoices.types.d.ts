@@ -1,3 +1,3 @@
 export type useFetchInvoicesProps = {
-    userId: number;
+    userId?: number;
 };

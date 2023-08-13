@@ -5,13 +5,15 @@ import { useRouter } from 'next/navigation';
 import { isAuthentified } from './_utils/isAuthentified';
 import { config } from './_config/config';
 import { useEffect } from 'react';
+import useFetchUser from './_hooks/useFetchUser/useFetchUser';
+import useFetchInvoices from './_hooks/useFetchInvoices/useFetchInvoices';
 
 dotenv.config({});
 
 export default function Home() {
     const router = useRouter();
     useEffect(() => {
-        if (!isAuthentified()) router.push('/signin');
+        if (!isAuthentified()) return router.push('/signin');
     }, []);
 
     return (

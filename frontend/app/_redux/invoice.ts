@@ -3,20 +3,22 @@ import type { PayloadAction } from '@reduxjs/toolkit';
 import { Invoice } from '../_types/Invoice';
 
 export interface InvoiceState {
-    invoices: Invoice;
+    invoices: Invoice[];
 }
 
 const initialState: InvoiceState = {
-    invoices: {
-        id: '',
-        title: '',
-        amount: 0,
-        dueDate: '',
-        createdAt: '',
-        updatedAt: '',
-        status: 'Cancel',
-        userId: 0,
-    },
+    invoices: [
+        {
+            id: '',
+            title: '',
+            amount: 0,
+            dueDate: '',
+            createdAt: '',
+            updatedAt: '',
+            status: 'Cancel',
+            userId: 0,
+        },
+    ],
 };
 
 export const invoiceSlice = createSlice({

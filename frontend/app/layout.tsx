@@ -8,6 +8,7 @@ import { colors } from './_utils/colors';
 import { usePathname } from 'next/navigation';
 import { store } from './_redux/store';
 import { Provider } from 'react-redux';
+import useFetchUser from './_hooks/useFetchUser';
 
 const inter = Inter({ subsets: ['latin'] });
 

@@ -7,9 +7,10 @@ type CustomButtonProps = ButtonProps & {
 };
 
 const CustomizedButton = styled(Button)({
+    color: 'white',
     backgroundColor: colors.blue_primary,
     fontWeight: 500,
-    fontSize: '16px',
+    fontSize: '14px',
     borderRadius: '10px',
     padding: '30px 0px',
     '&:hover': {

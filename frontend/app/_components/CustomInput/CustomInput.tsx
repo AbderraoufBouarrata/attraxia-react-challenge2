@@ -3,6 +3,8 @@ import React from 'react';
 import Image from 'next/image';
 import { BoxProps, InputAdornment, TextField, TextFieldProps } from '@mui/material';
 import { styled } from '@mui/material/styles';
+import Calendar from '@/app/_assets/icons/Calendar.svg';
+import ArrowDown from '@/app/_assets/icons/Arrow-Down-2.svg';
 
 import SearchIcon from '@/app//_assets/icons/Search.svg';
 import { blue, grey } from '@mui/material/colors';
@@ -29,7 +31,7 @@ const CssTextField = styled(TextField)({
 
 type MainInputProps = TextFieldProps &
     BoxProps & {
-        category?: 'text' | 'search' | undefined;
+        category?: 'text' | 'search' | 'dropdown' | 'date';
     };
 
 export default function CustomInput(props: MainInputProps) {
@@ -49,11 +51,20 @@ export default function CustomInput(props: MainInputProps) {
                 height: '60px',
                 px: '1rem',
             },
-            startAdornment: category === 'search' && (
-                <InputAdornment position="start">
-                    <Image src={SearchIcon} alt="search" style={{}} />
-                </InputAdornment>
-            ),
+            endAdornment:
+                category === 'search' ? (
+                    <InputAdornment position="start">
+                        <Image src={SearchIcon} alt="search" />
+                    </InputAdornment>
+                ) : category === 'dropdown' ? (
+                    <InputAdornment position="start">
+                        <Image src={ArrowDown} alt="search" />
+                    </InputAdornment>
+                ) : category === 'date' ? (
+                    <InputAdornment position="start">
+                        <Image src={Calendar} style={{ opacity: 0.25 }} alt="search" />
+                    </InputAdornment>
+                ) : null,
         },
     };
 

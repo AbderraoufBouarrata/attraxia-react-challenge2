@@ -6,10 +6,15 @@ import { styles } from './ProfileInvoices.styles';
 import { ProfileInvoicesProps } from './ProfileInvoices.types';
 import { generateInvoices } from './ProfileInvoices.helpers';
 import useFetchInvoices from '@/app/_hooks/useFetchInvoices/useFetchInvoices';
+import { useSelector } from 'react-redux';
+import { RootState } from '@/app/_redux/store';
 
 export default function ProfileInvoices(props: ProfileInvoicesProps) {
     const { user } = props;
-    const { invoices } = useFetchInvoices({ userId: parseInt(user.id) });
+    const { loading } = useFetchInvoices({ userId: user.id });
+    const { invoices } = useSelector((state: RootState) => state.invoice);
+
+    if (loading) return <div>Loading</div>;
     return (
         <Grid container sx={styles.mainContainer} rowGap={2}>
             <Grid sx={styles.alignCenter} item xs={12}>

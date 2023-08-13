@@ -6,4 +6,5 @@ export const colors = {
     green_secondary: 'rgba(3, 168, 158, .10)',
     red_primary: 'rgba(255, 105, 180, 1)',
     red_secondary: 'rgba(255, 105, 180, .05)',
+    text: '#757575',
 };

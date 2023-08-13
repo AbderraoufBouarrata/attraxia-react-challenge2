@@ -6,16 +6,14 @@ import { RootState } from '../../_redux/store';
 import { setUser } from '../../_redux/user';
 
 export default function useFetchUser() {
-    const { user } = useSelector((state: RootState) => state.user);
     const dispatch = useDispatch();
     const [loading, setLoading] = React.useState(true);
 
-    //@ts-ignore
     React.useEffect(() => {
         async function fetchUser() {
             const token = getAccessToken();
+            if (!token) return setLoading(false);
             const res = await fetch(`${config.API_URL}/user/me`, {
-                //@ts-ignore
                 headers: {
                     Authorization: `Bearer ${token}`,
                 },
@@ -33,6 +31,5 @@ export default function useFetchUser() {
         }
         fetchUser();
     }, []);
-
-    return { user, loading };
+    return { loading };
 }

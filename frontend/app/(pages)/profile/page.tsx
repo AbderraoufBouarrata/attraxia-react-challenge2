@@ -7,12 +7,15 @@ import Copyright from '@/app/_components/Copyright/Copyright';
 import useFetchUser from '@/app/_hooks/useFetchUser/useFetchUser';
 import { useRouter } from 'next/navigation';
 import ProfileInvoices from './_components/ProfileInvoices/ProfileInvoices';
+import { useSelector } from 'react-redux';
+import { RootState } from '@/app/_redux/store';
+import useFetchInvoices from '@/app/_hooks/useFetchInvoices';
 
 export default function page() {
     const router = useRouter();
-    const { user, loading } = useFetchUser();
+    useFetchUser();
+    const { user } = useSelector((state: RootState) => state.user);
 
-    if (loading) return <div>Loading...</div>;
     if (!user) router.push('/signin');
     return (
         <>
