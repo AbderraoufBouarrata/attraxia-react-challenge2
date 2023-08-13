@@ -1,11 +1,12 @@
 export const styles = {
     container: {
+        mt: '20px',
         display: 'flex',
         justifyContent: 'space-between',
         alignItems: 'center',
     },
     button: {
-        width: '200px',
+        width: '160px',
         height: '30px',
         display: 'flex',
         justifyContent: 'center',

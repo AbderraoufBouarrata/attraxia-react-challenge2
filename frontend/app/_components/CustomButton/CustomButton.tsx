@@ -12,7 +12,7 @@ const CustomizedButton = styled(Button)({
     fontWeight: 500,
     fontSize: '14px',
     borderRadius: '10px',
-    padding: '30px 0px',
+    padding: '25px 0px',
     '&:hover': {
         backgroundColor: colors.blue_primary,
     },

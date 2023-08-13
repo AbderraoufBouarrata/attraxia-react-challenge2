@@ -12,7 +12,7 @@ export default function Heading() {
             <Typography variant="h2">Invoice list</Typography>
             <CustomButton sx={styles.button}>
                 <Image src={Add} alt="plus" width={20} height={20} />
-                Add Invoice
+                Add New
             </CustomButton>
         </Box>
     );

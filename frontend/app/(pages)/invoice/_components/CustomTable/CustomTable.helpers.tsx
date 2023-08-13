@@ -12,6 +12,7 @@ import { DateTime } from 'luxon';
 import { styles } from './CustomTable.styles';
 import Calendar from '@/app/_assets/icons/Calendar-Green.svg';
 import Email from '@/app/_assets/icons/Email.svg';
+import StatusChip from '../StatusChip/StatusChip';
 
 function IndeterminateCheckbox({ indeterminate, className = '', ...rest }: { indeterminate?: boolean } & HTMLProps<HTMLInputElement>) {
     const ref = React.useRef<HTMLInputElement>(null!);
@@ -105,6 +106,7 @@ export const getColumns = () => {
                 </Stack>
             ),
             accessorKey: 'status',
+            cell: ({ row }: any) => <StatusChip status={row.original.status} />,
         },
         {
             header: '',

@@ -13,7 +13,7 @@ dotenv.config({});
 export default function Home() {
     const router = useRouter();
     useEffect(() => {
-        if (!isAuthentified()) return router.push('/signin');
+        return router.push('/profile');
     }, []);
 
     return (

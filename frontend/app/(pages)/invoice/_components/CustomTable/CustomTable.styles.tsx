@@ -5,7 +5,7 @@ export const styles = {
     table: {
         width: '100%',
         borderCollapse: 'separate',
-        padding: '0 10px',
+        padding: '0 0px',
         borderSpacing: '0 10px',
     },
     tableHeader: {

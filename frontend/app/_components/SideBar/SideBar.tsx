@@ -16,21 +16,26 @@ import { MenuTitles } from './SideBar.helpers';
 import { MenuIcons } from './SideBar.helpers';
 import Image from 'next/image';
 import Logo from '../../_assets/images/logo.png';
+import { usePathname } from 'next/navigation';
 
 export default function ClippedDrawer({ children }: { children?: React.ReactNode }) {
+    const pathname = usePathname().slice(1);
+
     return (
         <Box sx={{ display: 'flex' }}>
             <Drawer variant="permanent" open={true} sx={SideBarStyles.drawer}>
-                <Toolbar sx={SideBarStyles.listItemIcon}>
+                <Toolbar sx={{ ...SideBarStyles.listItemIcon, opacity: 1, justifyContent: 'center' }}>
                     <Image src={Logo} alt="Logo" quality={100} />
                 </Toolbar>
                 <Box sx={{ overflow: 'auto' }}>
-                    <List>
+                    <List disablePadding>
                         {MenuTitles.map((text, index) => (
                             // we can also disable padding here
-                            <ListItem key={text} sx={SideBarStyles.list}>
-                                <ListItemButton>
-                                    <ListItemIcon sx={SideBarStyles.listItemIcon}>
+                            <ListItem key={text}>
+                                <ListItemButton sx={SideBarStyles.list}>
+                                    <ListItemIcon
+                                        sx={pathname === text.toLocaleLowerCase() ? SideBarStyles.selectedListItemIcon : SideBarStyles.listItemIcon}
+                                    >
                                         {<Image src={MenuIcons[index]} alt="Menu Icon" style={SideBarStyles.icons} />}
                                     </ListItemIcon>
                                     <ListItemText sx={SideBarStyles.listItemText} primary={text} />

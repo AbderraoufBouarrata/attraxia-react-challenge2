@@ -26,6 +26,7 @@ export const invoiceSlice = createSlice({
     initialState,
     reducers: {
         setInvoice: (state, action: PayloadAction<Invoice>) => {
+            //@ts-ignore
             state.invoices = action.payload;
         },
     },

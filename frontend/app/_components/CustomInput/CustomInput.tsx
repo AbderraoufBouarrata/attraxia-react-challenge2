@@ -40,7 +40,7 @@ export default function CustomInput(props: MainInputProps) {
     const styles = {
         input: {
             borderRadius: '10px',
-            height: '60px',
+            height: '50px',
             backgroundColor: 'white',
         },
         inputStyle: {
@@ -48,7 +48,7 @@ export default function CustomInput(props: MainInputProps) {
                 backgroundColor: 'white',
                 color: 'black',
                 borderRadius: '10px',
-                height: '60px',
+                height: '50px',
                 px: '1rem',
             },
             endAdornment:

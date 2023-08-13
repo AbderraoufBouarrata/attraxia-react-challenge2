@@ -20,12 +20,26 @@ const SideBarStyles = {
         p: 3,
     },
     list: {
-        py: '5px',
+        height: '50px',
+        gap: '20px',
+        marginLeft: '-30px',
     },
     listItemIcon: {
         display: 'flex',
-        justifyContent: 'center',
+        justifyContent: 'end',
         alignItems: 'center',
+
+        opacity: 0.5,
+    },
+    selectedListItemIcon: {
+        width: 'auto',
+        display: 'flex',
+        justifyContent: 'end',
+        alignItems: 'center',
+        height: '100%',
+        opacity: 1,
+        borderRadius: '0px 10px 10px 0px',
+        backgroundColor: colors.blue_secondary,
     },
     listItemText: {
         '& .MuiTypography-root': {
