@@ -49,7 +49,7 @@ export default function CustomInput(props: MainInputProps) {
                 color: 'black',
                 borderRadius: '10px',
                 height: '50px',
-                px: '1rem',
+                px: '5px',
             },
             endAdornment:
                 category === 'search' ? (

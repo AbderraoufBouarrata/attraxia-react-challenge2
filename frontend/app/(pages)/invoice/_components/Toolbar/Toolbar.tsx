@@ -55,7 +55,7 @@ export default function Toolbar(props: ToolbarProps) {
             </Grid>
             <Grid item xs={12} sm={3} sx={styles.alignCenter}>
                 <Typography variant="subtitle1">Date</Typography>
-                <CustomInput fullWidth placeholder="mm/dd/yyyy" category="date" />
+                <CustomInput fullWidth placeholder="mm/dd/yyyy" category="date" type="date" />
             </Grid>
         </Grid>
     );

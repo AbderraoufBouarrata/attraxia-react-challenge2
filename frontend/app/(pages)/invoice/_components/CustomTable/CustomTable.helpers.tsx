@@ -14,6 +14,7 @@ import Calendar from '@/app/_assets/icons/Calendar-Green.svg';
 import Email from '@/app/_assets/icons/Email.svg';
 import StatusChip from '../StatusChip/StatusChip';
 import CustomAvatar from '@/app/_components/CustomAvatar/CustomAvatar';
+import CustomMenu from '../CustomMenu/CustomMenu';
 
 function IndeterminateCheckbox({ indeterminate, className = '', ...rest }: { indeterminate?: boolean } & HTMLProps<HTMLInputElement>) {
     const ref = React.useRef<HTMLInputElement>(null!);
@@ -110,7 +111,7 @@ export const getColumns = () => {
         {
             header: <Image src={DeleteIcon} alt="delete" />,
             accessorKey: 'delete',
-            cell: ({ row }: any) => <Image src={MenuIcon} alt="menu" />,
+            cell: ({ row }: any) => <CustomMenu />,
             enableSorting: false,
         },
     ];
