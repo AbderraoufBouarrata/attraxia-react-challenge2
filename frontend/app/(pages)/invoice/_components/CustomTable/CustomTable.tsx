@@ -2,13 +2,25 @@
 import useFetchInvoices from '@/app/_hooks/useFetchInvoices/useFetchInvoices';
 import { RootState } from '@/app/_redux/store';
 import Loading from '@/app/loading';
-import { PaginationState, flexRender, getCoreRowModel, getFilteredRowModel, getPaginationRowModel, useReactTable } from '@tanstack/react-table';
+
+import Image from 'next/image';
+import {
+    PaginationState,
+    flexRender,
+    getCoreRowModel,
+    getFilteredRowModel,
+    getPaginationRowModel,
+    getSortedRowModel,
+    useReactTable,
+} from '@tanstack/react-table';
 import { useMemo, useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { formatData, getColumns } from './CustomTable.helpers';
-import { TableRowStyles, styles } from './CustomTable.styles';
+import { Asc, Desc, TableRowStyles, styles } from './CustomTable.styles';
 import { CustomTableProps } from './CustomTable.types';
 import CustomPagination from '../CustomPagination/CustomPagination';
+import Heading from '../Heading/Heading';
+import Toolbar from '../Toolbar/Toolbar';
 
 export default function CustomTable(props: CustomTableProps) {
     const { user } = props;
@@ -17,19 +29,8 @@ export default function CustomTable(props: CustomTableProps) {
     const data = useMemo(() => formatData(invoices, user), [invoices, user]);
     const columns = useMemo(() => getColumns(), []);
     const [rowSelection, setRowSelection] = useState({});
-    // const [{ pageIndex, pageSize }, setPagination] = useState<PaginationState>({
-    //     pageIndex: 0,
-    //     pageSize: 10,
-    // });
-
-    // const pagination = useMemo(
-    //     () => ({
-    //         pageIndex,
-    //         pageSize,
-    //     }),
-    //     [pageIndex, pageSize],
-    // );
-
+    const [sorting, setSorting] = useState([]);
+    const [filtering, setFiltering] = useState('');
     const table = useReactTable({
         data: data,
         //@ts-ignore
@@ -39,18 +40,23 @@ export default function CustomTable(props: CustomTableProps) {
         onRowSelectionChange: setRowSelection,
         state: {
             rowSelection: rowSelection,
-            //pagination: pagination,
+            sorting: sorting,
+            globalFilter: filtering,
         },
         getFilteredRowModel: getFilteredRowModel(),
         getPaginationRowModel: getPaginationRowModel(),
+        getSortedRowModel: getSortedRowModel(),
+        //@ts-ignore
+        onSortingChange: setSorting,
+        onGlobalFilterChange: setFiltering,
         debugTable: true,
-        //pageCount : Math.ceil(invoices.length / 10);
     });
 
     if (columns.length < 1 || invoices.length < 1 || invoices[0].id === '') return <Loading />;
 
     return (
         <>
+            <Toolbar table={table} filtering={filtering} setFiltering={setFiltering} />
             <TableRowStyles />
             {/* @ts-ignore property textAlign is assignable to type string */}
             <table style={styles.table}>
@@ -59,8 +65,14 @@ export default function CustomTable(props: CustomTableProps) {
                         <tr key={headerGroup.id}>
                             {headerGroup.headers.map((header) => (
                                 // @ts-ignore property textAlign is assignable to type string
-                                <th style={styles.tableHeader} key={header.id}>
+                                <th style={styles.tableHeader} key={header.id} onClick={header.column.getToggleSortingHandler()}>
                                     {flexRender(header.column.columnDef.header, header.getContext())}
+                                    {
+                                        {
+                                            asc: <Asc />,
+                                            desc: <Desc />, // @ts-ignore
+                                        }[header.column.getIsSorted() ?? null]
+                                    }
                                 </th>
                             ))}
                         </tr>

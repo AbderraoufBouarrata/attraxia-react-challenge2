@@ -1,5 +1,7 @@
 import { colors } from '@/app/_utils/colors';
 import { css } from '@emotion/react';
+import ArrowDown from '@/app/_assets/icons/Arrow-Down-2.svg';
+import Image from 'next/image';
 
 export const styles = {
     table: {
@@ -9,7 +11,7 @@ export const styles = {
         borderSpacing: '0 10px',
     },
     tableHeader: {
-        backgroundColor: '#f5f5f5',
+        backgroundColor: 'transparent',
         fontWeight: 400,
         textAlign: 'left',
         color: colors.text,
@@ -29,6 +31,11 @@ export const styles = {
         margin: '0',
         //appearance: 'none',
     },
+    sortingIconUp: {
+        transform: 'rotate(180deg)',
+        translate: '0 -4px',
+    },
+    sortingIconDown: {},
 };
 
 export const TableRowStyles = () => (
@@ -58,4 +65,18 @@ export const TableRowStyles = () => (
 
         `}
     </style>
+);
+
+export const Asc = () => (
+    <>
+        {' '}
+        <Image src={ArrowDown} alt="" style={styles.sortingIconUp} />
+    </>
+);
+
+export const Desc = () => (
+    <>
+        {' '}
+        <Image src={ArrowDown} alt="" style={styles.sortingIconDown} />
+    </>
 );

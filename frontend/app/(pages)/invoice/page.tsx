@@ -20,9 +20,7 @@ export default function page() {
             <Grid item xs={12}>
                 <Heading />
             </Grid>
-            <Grid item xs={12}>
-                <Toolbar />
-            </Grid>
+
             <Grid item xs={12}>
                 <CustomTable user={user} />
             </Grid>

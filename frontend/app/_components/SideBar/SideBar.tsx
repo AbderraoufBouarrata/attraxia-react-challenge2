@@ -38,7 +38,10 @@ export default function ClippedDrawer({ children }: { children?: React.ReactNode
                                     >
                                         {<Image src={MenuIcons[index]} alt="Menu Icon" style={SideBarStyles.icons} />}
                                     </ListItemIcon>
-                                    <ListItemText sx={SideBarStyles.listItemText} primary={text} />
+                                    <ListItemText
+                                        sx={pathname === text.toLocaleLowerCase() ? SideBarStyles.selectedListItemText : SideBarStyles.listItemText}
+                                        primary={text}
+                                    />
                                 </ListItemButton>
                             </ListItem>
                         ))}

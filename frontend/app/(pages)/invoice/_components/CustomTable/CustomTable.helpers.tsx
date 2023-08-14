@@ -13,6 +13,7 @@ import { styles } from './CustomTable.styles';
 import Calendar from '@/app/_assets/icons/Calendar-Green.svg';
 import Email from '@/app/_assets/icons/Email.svg';
 import StatusChip from '../StatusChip/StatusChip';
+import CustomAvatar from '@/app/_components/CustomAvatar/CustomAvatar';
 
 function IndeterminateCheckbox({ indeterminate, className = '', ...rest }: { indeterminate?: boolean } & HTMLProps<HTMLInputElement>) {
     const ref = React.useRef<HTMLInputElement>(null!);
@@ -53,30 +54,25 @@ export const getColumns = () => {
                     />
                 </div>
             ),
+            enableSorting: false,
         },
         {
-            header: (
-                <Stack direction="row" alignItems="center" gap="10px">
-                    {'Invoice Id'} <Image src={ArrowDown} alt="arrow-down" />
-                </Stack>
-            ),
+            header: 'Invoice ID',
             accessorKey: 'id',
         },
         {
-            header: (
+            header: 'Name',
+
+            accessorKey: 'name',
+            cell: ({ row }: any) => (
                 <Stack direction="row" alignItems="center" gap="10px">
-                    {'Name'}
-                    <Image src={ArrowDown} alt="arrow-down" />
+                    <CustomAvatar src={`https://i.pravatar.cc/300?u=${row.index}`} name={row.original.name} sx={{ width: '40px', height: '40px' }} />
+                    {row.original.name}
                 </Stack>
             ),
-            accessorKey: 'name',
         },
         {
-            header: (
-                <Stack direction="row" alignItems="center" gap="10px">
-                    {'Email'} <Image src={ArrowDown} alt="arrow-down" />
-                </Stack>
-            ),
+            header: 'Email',
             accessorKey: 'email',
             cell: ({ row }: any) => (
                 <Stack direction="row" alignItems="center" gap="10px">
@@ -86,11 +82,7 @@ export const getColumns = () => {
             ),
         },
         {
-            header: (
-                <Stack direction="row" alignItems="center" gap="10px">
-                    {'Due Date'} <Image src={ArrowDown} alt="arrow-down" />
-                </Stack>
-            ),
+            header: 'Due Date',
             accessorKey: 'dueDate',
             cell: ({ row }: any) => (
                 <Stack direction="row" alignItems="center" gap="10px">
@@ -98,13 +90,14 @@ export const getColumns = () => {
                     {DateTime.fromISO(row.original.dueDate).toLocaleString(DateTime.DATE_MED)}
                 </Stack>
             ),
+            sortingFns: {
+                asc: (rowA: any, rowB: any, columnId: any) => {
+                    return DateTime.fromISO(rowA.original.dueDate) > DateTime.fromISO(rowB.original.dueDate) ? 1 : -1;
+                },
+            },
         },
         {
-            header: (
-                <Stack direction="row" alignItems="center" gap="10px">
-                    {'Status'} <Image src={ArrowDown} alt="arrow-down" />
-                </Stack>
-            ),
+            header: 'Status',
             accessorKey: 'status',
             cell: ({ row }: any) => <StatusChip status={row.original.status} />,
         },
@@ -112,11 +105,13 @@ export const getColumns = () => {
             header: '',
             accessorKey: 'favorite',
             cell: ({ row }: any) => <CustomCheckbox />,
+            enableSorting: false,
         },
         {
             header: <Image src={DeleteIcon} alt="delete" />,
             accessorKey: 'delete',
             cell: ({ row }: any) => <Image src={MenuIcon} alt="menu" />,
+            enableSorting: false,
         },
     ];
     return columns;
@@ -126,7 +121,7 @@ export const formatData = (data: Invoice[], user: User) => {
     return data.map((item) => {
         return {
             id: item.id,
-            name: user.name,
+            name: user.name || 'Unnamed Profile',
             email: user.email,
             dueDate: item.dueDate,
             status: item.status,

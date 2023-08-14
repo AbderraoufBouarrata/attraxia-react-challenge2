@@ -24,7 +24,7 @@ const CssTextField = styled(TextField)({
         },
         '&.Mui-focused.MuiOutlinedInput-root': {
             border: 'none',
-            backgroundColor: 'white', // Apply the desired focus state background color here
+            backgroundColor: 'white',
         },
     },
 });

@@ -48,6 +48,13 @@ const SideBarStyles = {
         fontSize: '16px',
         color: colors.text,
     },
+    selectedListItemText: {
+        '& .MuiTypography-root': {
+            fontWeight: 600,
+        },
+        fontSize: '16px',
+        color: colors.blue_primary,
+    },
     icons: {
         width: '25px',
         height: '25px',
