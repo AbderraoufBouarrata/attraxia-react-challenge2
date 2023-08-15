@@ -1,6 +1,5 @@
-import { colors } from '@/app/_utils/colors';
-import { css } from '@emotion/react';
 import ArrowDown from '@/app/_assets/icons/Arrow-Down-2.svg';
+import { colors } from '@/app/_utils/colors';
 import Image from 'next/image';
 
 export const styles = {

@@ -3,24 +3,14 @@ import useFetchInvoices from '@/app/_hooks/useFetchInvoices/useFetchInvoices';
 import { RootState } from '@/app/_redux/store';
 import Loading from '@/app/loading';
 
-import Image from 'next/image';
-import {
-    PaginationState,
-    flexRender,
-    getCoreRowModel,
-    getFilteredRowModel,
-    getPaginationRowModel,
-    getSortedRowModel,
-    useReactTable,
-} from '@tanstack/react-table';
+import { flexRender, getCoreRowModel, getFilteredRowModel, getPaginationRowModel, getSortedRowModel, useReactTable } from '@tanstack/react-table';
 import { useMemo, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
+import CustomPagination from '../CustomPagination/CustomPagination';
+import Toolbar from '../Toolbar/Toolbar';
 import { formatData, getColumns } from './CustomTable.helpers';
 import { Asc, Desc, TableRowStyles, styles } from './CustomTable.styles';
 import { CustomTableProps } from './CustomTable.types';
-import CustomPagination from '../CustomPagination/CustomPagination';
-import Heading from '../Heading/Heading';
-import Toolbar from '../Toolbar/Toolbar';
 
 export default function CustomTable(props: CustomTableProps) {
     const { user } = props;

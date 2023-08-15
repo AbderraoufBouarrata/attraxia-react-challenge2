@@ -1,20 +1,17 @@
-import ArrowDown from '@/app/_assets/icons/Arrow-Down.svg';
 import DeleteIcon from '@/app/_assets/icons/Delete.svg';
-import MenuIcon from '@/app/_assets/icons/Menu.svg';
+import CustomCheckbox from '@/app/_components/CustomCheckbox/CustomCheckbox';
 import { Invoice } from '@/app/_types/Invoice';
 import { User } from '@/app/_types/User';
-import { Stack, SvgIcon } from '@mui/material';
+import { Stack } from '@mui/material';
 import Image from 'next/image';
 import React, { HTMLProps } from 'react';
-import CustomCheckbox from '@/app/_components/CustomCheckbox/CustomCheckbox';
-//@ts-ignore This library does not have types for TS
-import { DateTime } from 'luxon';
-import { styles } from './CustomTable.styles';
 import Calendar from '@/app/_assets/icons/Calendar-Green.svg';
 import Email from '@/app/_assets/icons/Email.svg';
-import StatusChip from '../StatusChip/StatusChip';
 import CustomAvatar from '@/app/_components/CustomAvatar/CustomAvatar';
+import { DateTime } from 'luxon';
 import CustomMenu from '../CustomMenu/CustomMenu';
+import StatusChip from '../StatusChip/StatusChip';
+import { styles } from './CustomTable.styles';
 
 function IndeterminateCheckbox({ indeterminate, className = '', ...rest }: { indeterminate?: boolean } & HTMLProps<HTMLInputElement>) {
     const ref = React.useRef<HTMLInputElement>(null!);
