@@ -6,7 +6,7 @@
 
 React Challenge 2 for Attraxia
 made by [Me](https://github.com/AbderraoufBouarrata)
-
+you will also find the postman collection in backend folder 
 ## Installation Backend
 
 ```bash
