@@ -15,6 +15,7 @@ export const styles = {
         textAlign: 'left',
         color: colors.text,
         padding: '0 10px',
+        cursor: 'pointer',
     },
     alignCenter: {
         display: 'flex',
@@ -40,6 +41,8 @@ export const styles = {
 export const TableRowStyles = () => (
     <style>
         {`
+
+            
             .tableRow{
                 background-color: white;
                 height: 60px;

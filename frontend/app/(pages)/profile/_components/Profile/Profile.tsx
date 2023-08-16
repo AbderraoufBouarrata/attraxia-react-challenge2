@@ -4,6 +4,7 @@ import CustomButton from '@/app/_components/CustomButton/CustomButton';
 import { Grid } from '@mui/material';
 import { styles } from './Profile.styles';
 import { ProfileProps } from './Profile.types';
+import Link from 'next/link';
 
 export default function Profile(props: ProfileProps) {
     const { user } = props;
@@ -20,7 +21,9 @@ export default function Profile(props: ProfileProps) {
                 {user.email}
             </Grid>
             <Grid sx={styles.alignCenter} item xs={12}>
-                <CustomButton sx={styles.button}>Invoices</CustomButton>
+                <Link style={styles.link} href="/invoice">
+                    <CustomButton sx={styles.button}>Invoices</CustomButton>
+                </Link>
             </Grid>
         </Grid>
     );

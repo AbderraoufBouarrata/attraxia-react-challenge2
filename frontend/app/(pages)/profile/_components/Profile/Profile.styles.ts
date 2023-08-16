@@ -21,4 +21,8 @@ export const styles = {
         height: '50px',
         color: 'white',
     },
+    link: {
+        textDecoration: 'none',
+        color: 'inherit',
+    },
 };

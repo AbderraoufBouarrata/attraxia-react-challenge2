@@ -93,6 +93,15 @@ export const getColumns = () => {
                     return DateTime.fromISO(rowA.original.dueDate) > DateTime.fromISO(rowB.original.dueDate) ? 1 : -1;
                 },
             },
+            //filterFn is for filtering out all rows that are not included in the date range
+            filterFn: (rows: any, id: any, filterValue: any) => {
+                alert('executed');
+                const { startDate, endDate } = filterValue;
+                return rows.filter((row: any) => {
+                    const rowDate = DateTime.fromISO(row.original.dueDate);
+                    return rowDate >= startDate && rowDate <= endDate;
+                });
+            },
         },
         {
             header: 'Status',

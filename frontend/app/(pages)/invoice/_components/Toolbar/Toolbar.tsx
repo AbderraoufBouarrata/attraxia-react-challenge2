@@ -9,14 +9,13 @@ import { ToolbarProps } from './Toolbar.types';
 import { DateRangePicker } from 'rsuite';
 import 'rsuite/dist/rsuite.min.css';
 import Calendar from '@/app/_assets/icons/Calendar.svg';
-import { changeArrowsToIcons } from './Toolbar.helpers';
+import { changeArrowsToIcons, filterRowsPerDateRange, getDatesInBetween } from './Toolbar.helpers';
+import { DateTime } from 'luxon';
 
 export default function Toolbar(props: ToolbarProps) {
-    const { table, filtering, setFiltering } = props;
+    const { rows, setVisibleRows, setFiltering } = props;
     const [loading, setLoading] = useState(false);
     const [selectedStatus, setSelectedStatus] = useState('Select a status');
-
-    const [isOpen, setIsOpen] = useState(false);
 
     const CalendarIcon = () => <Image src={Calendar} alt="calendar" width={20} height={20} style={{ opacity: 0.3 }} />;
 
@@ -34,10 +33,19 @@ export default function Toolbar(props: ToolbarProps) {
         if (dateRange.length > 1) setDateRange([]);
         //@ts-ignore
         setDateRange((prevDates) => [...prevDates, selectedDate]);
-
-        if (dateRange.length < 2) return;
-        //TODO logic for filtering by date
     };
+    useEffect(() => {
+        // the getDatesInBetween cannot be called in handleSelectChange because
+        // the setDateRange is a state setter hence it is an asynchronous function
+        // so it will always be one step behind the current state
+        let dates: any[] = [];
+        if (dateRange.length !== 2) return;
+        dates = getDatesInBetween(dateRange);
+
+        if (!dates) return;
+        const temp = filterRowsPerDateRange(dates, rows);
+        setVisibleRows(temp);
+    }, [dateRange]);
 
     return (
         <Grid container spacing={2} my="1rem">
@@ -46,7 +54,7 @@ export default function Toolbar(props: ToolbarProps) {
                     fullWidth
                     placeholder="Search"
                     category="search"
-                    value={filtering}
+                    //value={filtering}
                     onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
                         handleSearchChange(e);
                     }}

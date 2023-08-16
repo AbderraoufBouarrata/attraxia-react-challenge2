@@ -1,5 +1,5 @@
 export type ToolbarProps = {
-    table: any;
-    filtering: string;
     setFiltering: (value: string) => void;
+    rows: any[];
+    setVisibleRows: (value: any[]) => void;
 };

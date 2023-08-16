@@ -4,7 +4,7 @@ import { RootState } from '@/app/_redux/store';
 import Loading from '@/app/loading';
 
 import { flexRender, getCoreRowModel, getFilteredRowModel, getPaginationRowModel, getSortedRowModel, useReactTable } from '@tanstack/react-table';
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { useSelector } from 'react-redux';
 import CustomPagination from '../CustomPagination/CustomPagination';
 import Toolbar from '../Toolbar/Toolbar';
@@ -16,13 +16,18 @@ export default function CustomTable(props: CustomTableProps) {
     const { user } = props;
     useFetchInvoices({ userId: user.id });
     const { invoices } = useSelector((state: RootState) => state.invoice);
-    const data = useMemo(() => formatData(invoices, user), [invoices, user]);
+    const [visibleRows, setVisibleRows] = useState<any>([]);
     const columns = useMemo(() => getColumns(), []);
     const [rowSelection, setRowSelection] = useState({});
     const [sorting, setSorting] = useState([]);
     const [filtering, setFiltering] = useState('');
+    const rows = useMemo(() => {
+        const temp = formatData(invoices, user);
+        setVisibleRows(temp);
+        return temp;
+    }, [invoices, user]);
     const table = useReactTable({
-        data: data,
+        data: visibleRows,
         //@ts-ignore
         columns,
         getCoreRowModel: getCoreRowModel(),
@@ -42,11 +47,11 @@ export default function CustomTable(props: CustomTableProps) {
         debugTable: true,
     });
 
-    if (columns.length < 1 || invoices.length < 1 || invoices[0].id === '') return <Loading />;
+    if (columns.length < 1 || invoices.length < 1 || invoices[0].id === '' || !table) return <Loading />;
 
     return (
         <>
-            <Toolbar table={table} filtering={filtering} setFiltering={setFiltering} />
+            <Toolbar rows={rows} setVisibleRows={setVisibleRows} setFiltering={setFiltering} />
             <TableRowStyles />
             {/* @ts-ignore property textAlign is assignable to type string */}
             <table style={styles.table}>

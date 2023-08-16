@@ -29,7 +29,8 @@ export default function ProfileInvoices(props: ProfileInvoicesProps) {
                 </Paper>
             </Grid>
             <Grid sx={styles.alignCenter} item xs={12}>
-                <CustomButton sx={styles.button} onClick={() => generateInvoices(parseInt(user.id))}>
+                {/* TODO */}
+                <CustomButton sx={styles.button} onClick={() => generateInvoices(user.id)}>
                     Generate Mock Data x10
                 </CustomButton>
             </Grid>
