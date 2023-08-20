@@ -38,37 +38,6 @@ export const styles = {
     sortingIconDown: {},
 };
 
-export const TableRowStyles = () => (
-    <style>
-        {`
-
-            
-            .tableRow{
-                background-color: white;
-                height: 60px;
-                padding: 0 10px;
-
-            }
-            .tableRow td {
-                padding: 0 10px;
-            }
-            .tableRow td:first-child{
-                border-top-left-radius: 10px;
-                border-bottom-left-radius: 10px;
-                
-            }
-            .tableRow td:last-child{
-                border-top-right-radius: 10px;
-                border-bottom-right-radius: 10px;
-            }
-            .cursor-pointer{
-                cursor: pointer;
-            }
-
-        `}
-    </style>
-);
-
 export const Asc = () => (
     <>
         {' '}

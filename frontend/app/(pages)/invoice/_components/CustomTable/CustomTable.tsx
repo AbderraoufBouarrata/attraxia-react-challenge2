@@ -9,8 +9,9 @@ import { useSelector } from 'react-redux';
 import CustomPagination from '../CustomPagination/CustomPagination';
 import Toolbar from '../Toolbar/Toolbar';
 import { formatData, getColumns } from './CustomTable.helpers';
-import { Asc, Desc, TableRowStyles, styles } from './CustomTable.styles';
+import { Asc, Desc, styles } from './CustomTable.styles';
 import { CustomTableProps } from './CustomTable.types';
+import './CustomTable.styles.css';
 
 export default function CustomTable(props: CustomTableProps) {
     const { user } = props;
@@ -52,7 +53,6 @@ export default function CustomTable(props: CustomTableProps) {
     return (
         <>
             <Toolbar rows={rows} setVisibleRows={setVisibleRows} setFiltering={setFiltering} />
-            <TableRowStyles />
             {/* @ts-ignore property textAlign is assignable to type string */}
             <table style={styles.table}>
                 <thead>
