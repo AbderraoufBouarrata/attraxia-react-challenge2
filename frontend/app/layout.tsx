@@ -29,7 +29,7 @@ const Head = (
 export default function RootLayout({ children }: { children: React.ReactNode }) {
     const router = useRouter();
     useEffect(() => {
-        if (!isAuthentified()) return router.push('/signin');
+        if (isAuthentified() === false) return router.push('/signin');
     }, []);
 
     const pathname = usePathname();
